@@ -9,26 +9,26 @@ const posts = ref([
   {title: 'post 4', id:'4',},
 
 ]);
-const favorito = ref('')
+const favorito = ref("")
 
 const cambiarFavorito = (title) => {
-  favorito.value = title
-}
+  favorito.value = title;
+};
 </script>
 
 <template>
   <div class="container">
     <h1>APP</h1>
-    <h2>Mi post favorito: Post 2</h2>
+    <h2>Mi post favorito: {{ favorito }}</h2>
 
     <BlogPost
     v-for="post in posts"
     :key="post.id"
     :title="post.title"
     :id="post.id"
-    :body="post.body">
+    :body="post.body"
     @cambiarFavorito="cambiarFavorito"
-    </BlogPost>  
+    ></BlogPost>  
    
   </div>
  
