@@ -3,10 +3,6 @@ import BlogPost from "./components/BlogPost.vue"
 import { ref } from "vue";
 
 const posts = ref([
-  {title: 'post 1', id:'1', body:'descripción 1'},
-  {title: 'post 2', id:'2', body:'descripción 2'},
-  {title: 'post 3', id:'3', body:'descripción 3'},
-  {title: 'post 4', id:'4',},
 
 ]);
 const favorito = ref("")
@@ -14,6 +10,12 @@ const favorito = ref("")
 const cambiarFavorito = (title) => {
   favorito.value = title;
 };
+
+fetch('https://jsonplaceholder.typicode.com/posts')
+  .then(res => res.json() )
+  .then(data=> {
+    posts.value = data})
+
 </script>
 
 <template>
@@ -27,7 +29,7 @@ const cambiarFavorito = (title) => {
     :title="post.title"
     :id="post.id"
     :body="post.body"
-    @cambiarFavorito="cambiarFavorito"
+    @cambiarFavoritoNombre="cambiarFavorito"
     ></BlogPost>  
    
   </div>
