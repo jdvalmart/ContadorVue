@@ -37,10 +37,15 @@ fetch('https://jsonplaceholder.typicode.com/posts')
     <h1>APP</h1>
     <h2>Mi post favorito: {{ favorito }}</h2>
 
+
       
-    <PaginatePost class="mb-2"
+    <PaginatePost
+      class="mb-2"
       @next="next"
       @previo="previo"
+      :inicio="inicio"
+      :fin="fin"
+      :maxLength="posts.length"
     />
     
     <BlogPost
