@@ -1,6 +1,9 @@
-# component-1
+# Pagina previa en netlify
 
-This template should help get you started developing with Vue 3 in Vite.
+-[preview page] (https://mis-posts-favoritos.netlify.app/)
+ Este es un ejemplo de vue 3, trabajando con componentes y el composition api.
+
+
 
 ## Recommended IDE Setup
 
