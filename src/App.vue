@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import BlogPost from "./components/BlogPost.vue";
 import PaginatePost from "./components/PaginatePost.vue";
@@ -27,7 +27,22 @@ const previo = () => {
   fin.value += - postXpage;
 }
 
-fetch('https://jsonplaceholder.typicode.com/posts')
+onMounted(async()=>{
+  loading.value=true;
+  try{
+    const res = await  fetch('https://jsonplaceholder.typicode.com/posts');
+    posts.value = await res.json();
+  } catch (error){
+    console.log(error);
+  }
+  finally {
+    setTimeout(()=> {
+      loading.value=false;
+    },2000);
+  }
+});
+
+/* fetch('https://jsonplaceholder.typicode.com/posts')
   .then(res => res.json() )
   .then(data=> {
     posts.value = data})
@@ -35,7 +50,7 @@ fetch('https://jsonplaceholder.typicode.com/posts')
     setTimeout(()=>{
       loading.value=false
     },2000)
-    })
+    }) */
 
 </script>
 
